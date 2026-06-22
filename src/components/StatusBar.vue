@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from "vue";
 
-const clock = ref('')
+const clock = ref("");
 
 function tick() {
-  clock.value = new Date().toLocaleTimeString('en-GB', {
-    timeZone: 'Africa/Douala',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-  })
+  clock.value = new Date().toLocaleTimeString("en-GB", {
+    timeZone: "Africa/Douala",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
 }
 
-let timer: ReturnType<typeof setInterval>
-onMounted(() => { tick(); timer = setInterval(tick, 1000) })
-onUnmounted(() => clearInterval(timer))
+let timer: ReturnType<typeof setInterval>;
+onMounted(() => {
+  tick();
+  timer = setInterval(tick, 1000);
+});
+onUnmounted(() => clearInterval(timer));
 </script>
 
 <template>
