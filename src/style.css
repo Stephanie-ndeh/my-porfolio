@@ -1,13 +1,51 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* colours */
+  --color-bg: #1a1a18;
+  --color-panel: #141413;
+  --color-hair: #242420;
+  --color-heading: #eceae3;
+  --color-body: #b9b7ae;
+  --color-bodysoft: #b5b3aa;
+  --color-biotext: #a8a69d;
+  --color-muted: #85837a;
+  --color-comment: #5a5851;
+  --color-faint: #46453f;
+  --color-line: #4a4a43;
+  --color-tag: #9a988f;
+  --color-value: #e2e0d8;
+  --color-accent: #a7c080;
+  --color-synblue: #7e9cd8;
+  --color-syncoral: #d08c70;
+
+  /* fonts */
+  --font-sans: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* custom breakpoint */
+  --breakpoint-nav: 880px;
+}
 
 :root {
-  --accent: #a7c080;
+  --accent: var(--color-accent);
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+span {
+  font-family: var(--font-mono);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
 }
 
 body {
@@ -50,8 +88,14 @@ body {
 }
 
 @keyframes twcaret {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes pulse {

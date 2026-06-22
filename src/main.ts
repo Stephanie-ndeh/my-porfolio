@@ -1,10 +1,10 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-import { vReveal } from './directives/reveal'
-import { vScramble } from './directives/scramble'
+import { createApp } from "vue";
+import "./style.css";
+import App from "./App.vue";
+import { vReveal } from "./directives/reveal";
+import { vScramble } from "./directives/scramble";
 
-const app = createApp(App)
-app.directive('reveal', vReveal)
-app.directive('scramble', vScramble)
-app.mount('#app')
+const app = createApp(App);
+app.directive("reveal", vReveal);
+app.directive("scramble", vScramble);
+app.mount("#app");

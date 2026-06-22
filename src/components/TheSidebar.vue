@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="z-20 bg-panel"
+    class="z-20"
     :style="
       desktop
         ? {
@@ -56,9 +56,7 @@
             style="background: var(--accent); opacity: 0.55"
           ></span>
         </div>
-        <span class="font-mono text-[12.5px] text-tag tracking-[0.02em]"
-          >stephanie/</span
-        >
+        <span class="text-[12.5px] text-tag tracking-[0.02em]">stephanie/</span>
       </button>
 
       <!-- Nav file list (hidden on mobile) -->
@@ -71,22 +69,14 @@
                 gap: '2px',
                 marginTop: '30px',
               }
-            : {
-                display: 'none',
-              }
+            : { display: 'none' }
         "
       >
         <a
           v-for="item in navItems"
           :key="item.id"
           href="#"
-          class="block font-mono text-[13px] tracking-[0.01em] no-underline cursor-pointer whitespace-nowrap"
-          style="
-            padding: 7px 14px 7px 16px;
-            transition:
-              color 0.15s,
-              background 0.15s;
-          "
+          class="block font-mono text-[13px] tracking-[0.01em] no-underline cursor-pointer whitespace-nowrap py-[7px] pr-[14px] pl-4 transition-[color,background] duration-150"
           :style="navItemStyle(item.section)"
           @click.prevent="emit('navigate', item.section)"
           @mouseenter="() => (hoverItem = item.section)"
@@ -116,8 +106,7 @@
       >
         <span class="status-dot"></span>
         <span
-          class="font-mono text-[11.5px] tracking-[0.02em] whitespace-nowrap"
-          style="color: var(--accent)"
+          class="text-[11.5px] tracking-[0.02em] whitespace-nowrap text-accent"
           >available for work</span
         >
       </div>
@@ -172,14 +161,14 @@ function navItemStyle(section: string) {
   const isActive = activeSectionInNav.value === section;
   const isHovered = hoverItem.value === section && !isActive;
   return {
-    color: isActive ? '#ECEAE3' : isHovered ? '#ECEAE3' : '#85837A',
-    borderLeft: isActive ? '2px solid var(--accent)' : '2px solid transparent',
+    color: isActive ? "#ECEAE3" : isHovered ? "#ECEAE3" : "#85837A",
+    borderLeft: isActive ? "2px solid var(--accent)" : "2px solid transparent",
     background: isActive
-      ? 'rgba(167,192,128,0.07)'
+      ? "rgba(167,192,128,0.07)"
       : isHovered
-        ? 'rgba(255,255,255,0.05)'
-        : 'transparent',
-  }
+        ? "rgba(255,255,255,0.05)"
+        : "transparent",
+  };
 }
 
 function onBrandClick() {

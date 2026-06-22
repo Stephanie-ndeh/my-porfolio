@@ -1,28 +1,30 @@
 <template>
-  <section
-    id="services"
-    style="margin-top: 128px; border-top: 1px solid #242420; padding-top: 46px;"
-  >
-    <div style="display: flex; align-items: baseline; gap: 14px;">
-      <span v-scramble class="font-mono text-[13px]" style="color: var(--accent);">services.ts</span>
-      <span class="font-mono text-[12px]" style="color: #5a5851;">// what I can do for you</span>
+  <section id="services" class="mt-32 border-t border-hair pt-[46px]">
+    <div class="flex items-baseline gap-[14px]">
+      <span v-scramble class="text-[13px] text-accent">services.ts</span>
+      <span class="text-[12px] text-comment">// what I can do for you</span>
     </div>
 
-    <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 2px;">
+    <div class="mt-[30px] flex flex-col gap-[2px]">
       <div
         v-for="(service, i) in services"
         :key="service.name"
         v-reveal="i * 70"
-        class="service-row"
-        style="display: flex; gap: 18px; padding: 18px 0; border-top: 1px solid #242420; transition: background .2s;"
+        class="flex gap-[18px] py-[18px] border-t border-hair transition-[background] duration-200 hover:bg-[rgba(255,255,255,0.018)]"
       >
-        <span class="font-mono text-[12px]" style="color: #7E9CD8; flex: none; padding-top: 3px; width: 52px;">export</span>
+        <span class="text-[12px] text-synblue flex-none pt-[3px] w-[52px]"
+          >export</span
+        >
         <div>
-          <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;">
-            <span class="font-mono text-[15px]" style="color: #ECEAE3;">{{ service.name }}</span>
-            <span class="font-mono text-[12px]" style="color: #D08C70;">{{ service.sig }}</span>
+          <div class="flex items-baseline gap-3 flex-wrap">
+            <span class="text-[15px] text-heading">{{ service.name }}</span>
+            <span class="text-[12px] text-syncoral">{{ service.sig }}</span>
           </div>
-          <p class="m-0" style="font-size: 16.5px; line-height: 1.55; color: #B5B3AA; margin: 8px 0 0; max-width: 640px;">{{ service.body }}</p>
+          <p
+            class="m-0 mt-2 text-[16.5px] leading-[1.55] text-bodysoft max-w-[640px]"
+          >
+            {{ service.body }}
+          </p>
         </div>
       </div>
     </div>
@@ -31,15 +33,25 @@
 
 <script setup lang="ts">
 const services = [
-  { name: 'frontendDevelopment()', sig: 'Vue / React',    body: 'Building fast, accessible interfaces from scratch.' },
-  { name: 'uiuxImplementation()',  sig: 'from Figma',      body: 'Turning designs into pixel-accurate, responsive code.' },
-  { name: 'landingPages()',        sig: 'marketing sites', body: 'Quick-turnaround sites focused on conversion and clarity.' },
-  { name: 'fullStackSupport()',    sig: 'as needed',       body: 'Frontend-led projects with backend integration or support as needed.' },
-]
+  {
+    name: "frontendDevelopment()",
+    sig: "Vue / React",
+    body: "Building fast, accessible interfaces from scratch.",
+  },
+  {
+    name: "uiuxImplementation()",
+    sig: "from Figma",
+    body: "Turning designs into pixel-accurate, responsive code.",
+  },
+  {
+    name: "landingPages()",
+    sig: "marketing sites",
+    body: "Quick-turnaround sites focused on conversion and clarity.",
+  },
+  {
+    name: "fullStackSupport()",
+    sig: "as needed",
+    body: "Frontend-led projects with backend integration or support as needed.",
+  },
+];
 </script>
-
-<style scoped>
-.service-row:hover {
-  background: rgba(255, 255, 255, 0.018);
-}
-</style>
