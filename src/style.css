@@ -1,27 +1,65 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* colours */
+  --color-bg: #1a1a18;
+  --color-panel: #141413;
+  --color-hair: #242420;
+  --color-heading: #eceae3;
+  --color-body: #b9b7ae;
+  --color-bodysoft: #b5b3aa;
+  --color-biotext: #a8a69d;
+  --color-muted: #85837a;
+  --color-comment: #5a5851;
+  --color-faint: #46453f;
+  --color-line: #4a4a43;
+  --color-tag: #9a988f;
+  --color-value: #e2e0d8;
+  --color-accent: #a7c080;
+  --color-synblue: #7e9cd8;
+  --color-syncoral: #d08c70;
+
+  /* fonts */
+  --font-sans: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* custom breakpoint */
+  --breakpoint-nav: 880px;
+}
 
 :root {
-  --accent: #A7C080;
+  --accent: var(--color-accent);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+span {
+  font-family: var(--font-mono);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+}
+
 body {
   margin: 0;
-  background: #1A1A18;
-  color: #E8E6DF;
-  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  background: #1a1a18;
+  color: #e8e6df;
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
   background: rgba(167, 192, 128, 0.26);
-  color: #F2F1EB;
+  color: #f2f1eb;
 }
 
 ::-webkit-scrollbar {
@@ -39,14 +77,37 @@ body {
 }
 
 @keyframes blink {
-  0%, 48% { opacity: 1; }
-  49%, 100% { opacity: 0; }
+  0%,
+  48% {
+    opacity: 1;
+  }
+  49%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes twcaret {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(167, 192, 128, 0.45); }
-  70% { box-shadow: 0 0 0 8px rgba(167, 192, 128, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(167, 192, 128, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(167, 192, 128, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(167, 192, 128, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(167, 192, 128, 0);
+  }
 }
 
 .cursor-blink {

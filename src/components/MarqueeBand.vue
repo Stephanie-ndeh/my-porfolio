@@ -1,9 +1,16 @@
 <script setup lang="ts">
 const items = [
-  'Frontend Engineer', 'Vue 3', 'TypeScript', 'Tailwind CSS',
-  'Open to Work', 'Cameroon', 'Building for the Web',
-  'Nuxt', 'UI Engineering', 'Remote Ready',
-]
+  "Frontend Engineer",
+  "Vue 3",
+  "TypeScript",
+  "Tailwind CSS",
+  "Open to Work",
+  "Cameroon",
+  "Building for the Web",
+  "Nuxt",
+  "UI Engineering",
+  "Remote Ready",
+];
 </script>
 
 <template>
@@ -13,7 +20,9 @@ const items = [
       <template v-for="n in 2" :key="n">
         <div class="flex items-center">
           <template v-for="(item, i) in items" :key="`${n}-${i}`">
-            <span class="text-[11px] uppercase tracking-widest2 text-ink/40 px-5 whitespace-nowrap">
+            <span
+              class="text-[11px] uppercase tracking-widest2 text-ink/40 px-5 whitespace-nowrap"
+            >
               {{ item }}
             </span>
             <span class="w-1 h-1 rounded-full bg-ink/20 flex-shrink-0" />

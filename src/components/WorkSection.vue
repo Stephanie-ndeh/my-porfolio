@@ -1,22 +1,26 @@
 <script setup lang="ts">
-import { useScrollReveal } from '../composables/useScrollReveal'
+import { useScrollReveal } from "../composables/useScrollReveal";
 
-const { target, visible } = useScrollReveal()
+const { target, visible } = useScrollReveal();
 
 interface Project {
-  name: string
-  type: string
-  url: string
+  name: string;
+  type: string;
+  url: string;
 }
 
 const otherProjects: Project[] = [
-  { name: 'Zeney', type: 'Fintech · Money transfer app', url: 'https://staging.getzeney.app/' },
   {
-    name: 'THIA Skincare',
-    type: 'E-commerce · Skincare brand',
-    url: 'https://thia-skincare-frontend.vercel.app/',
+    name: "Zeney",
+    type: "Fintech · Money transfer app",
+    url: "https://staging.getzeney.app/",
   },
-]
+  {
+    name: "THIA Skincare",
+    type: "E-commerce · Skincare brand",
+    url: "https://thia-skincare-frontend.vercel.app/",
+  },
+];
 </script>
 
 <template>
@@ -26,7 +30,9 @@ const otherProjects: Project[] = [
     class="px-6 py-12 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10 sm:py-16"
     :class="visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'"
   >
-    <div class="mb-7 text-[11px] uppercase tracking-[0.08em] text-ink/35">Selected work</div>
+    <div class="mb-7 text-[11px] uppercase tracking-[0.08em] text-ink/35">
+      Selected work
+    </div>
 
     <a
       href="https://www.mesagoo.com/"
@@ -39,8 +45,8 @@ const otherProjects: Project[] = [
       </div>
       <div class="mb-2 text-xl font-medium text-paper sm:text-2xl">Mesagoo</div>
       <p class="max-w-sm text-[13px] leading-relaxed text-paper/50">
-        Frontend for a professional bulk SMS &amp; marketing platform — built for businesses across
-        Africa to reach customers at scale.
+        Frontend for a professional bulk SMS &amp; marketing platform — built
+        for businesses across Africa to reach customers at scale.
       </p>
       <div class="mt-5 flex flex-wrap gap-2">
         <span
@@ -73,12 +79,17 @@ const otherProjects: Project[] = [
         class="group flex items-center justify-between border-b border-ink/[0.07] py-4 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:pl-2.5 last:border-b-0"
       >
         <div class="flex items-baseline gap-3">
-          <span class="min-w-[18px] text-[11px] text-ink/25">{{ String(index + 2).padStart(2, '0') }}</span>
+          <span class="min-w-[18px] text-[11px] text-ink/25">{{
+            String(index + 2).padStart(2, "0")
+          }}</span>
           <div>
-            <span class="text-sm font-medium text-ink/80 transition-colors group-hover:text-ink">{{
-              project.name
+            <span
+              class="text-sm font-medium text-ink/80 transition-colors group-hover:text-ink"
+              >{{ project.name }}</span
+            >
+            <span class="ml-2.5 text-[11px] text-ink/40">{{
+              project.type
             }}</span>
-            <span class="ml-2.5 text-[11px] text-ink/40">{{ project.type }}</span>
           </div>
         </div>
         <span
