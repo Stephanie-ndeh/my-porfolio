@@ -172,14 +172,14 @@ function navItemStyle(section: string) {
   const isActive = activeSectionInNav.value === section;
   const isHovered = hoverItem.value === section && !isActive;
   return {
-    color: isActive ? "#ECEAE3" : "#85837A",
-    borderLeft: isActive ? "2px solid var(--accent)" : "2px solid transparent",
+    color: isActive ? '#ECEAE3' : isHovered ? '#ECEAE3' : '#85837A',
+    borderLeft: isActive ? '2px solid var(--accent)' : '2px solid transparent',
     background: isActive
-      ? "rgba(167,192,128,0.07)"
+      ? 'rgba(167,192,128,0.07)'
       : isHovered
-        ? "rgba(255,255,255,0.035)"
-        : "transparent",
-  };
+        ? 'rgba(255,255,255,0.05)'
+        : 'transparent',
+  }
 }
 
 function onBrandClick() {
