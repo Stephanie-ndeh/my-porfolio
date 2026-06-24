@@ -49,20 +49,20 @@
 const links = [
   {
     label: "email",
-    href: "mailto:hello@stephaniembusheri.dev",
-    display: "hello@stephaniembusheri.dev",
+    href: "mailto:stephaniembusheri@gmail.com",
+    display: "stephaniembusheri@gmail.com",
     external: false,
   },
   {
     label: "github",
-    href: "https://github.com/stephaniembusheri",
-    display: "github.com/stephaniembusheri",
+    href: "https://github.com/Stephanie-ndeh/",
+    display: "github.com/Stephanie-ndeh",
     external: true,
   },
   {
     label: "linkedin",
-    href: "https://linkedin.com/in/stephaniembusheri",
-    display: "linkedin.com/in/stephaniembusheri",
+    href: "https://www.linkedin.com/",
+    display: "linkedin.com/in/stephanie-ndeh",
     external: true,
   },
 ];

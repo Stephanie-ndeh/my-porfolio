@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-w-full overflow-x-hidden">
     <TheSidebar :active-section="activeSection" @navigate="scrollTo" />
     <main :style="mainStyle">
       <div class="max-w-[840px] mx-auto">

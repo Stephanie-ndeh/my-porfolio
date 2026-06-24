@@ -91,8 +91,6 @@ interface Project {
   linkHref: string;
   problem: string;
   role: string;
-  decision: string;
-  decisionPlaceholder: boolean;
   stack: string[];
 }
 
@@ -106,10 +104,7 @@ const projects: Project[] = [
     linkHref: "https://mesagoo.com",
     problem:
       "Businesses needed a reliable way to send promotional SMS at scale across unreliable telecom networks.",
-    role: "Built the campaign builder UI and real-time delivery dashboard from scratch.",
-    decision:
-      "Chose optimistic UI updates with rollback to keep the dashboard feeling instant despite slow delivery webhooks.",
-    decisionPlaceholder: false,
+    role: "Owned the entire frontend — landing page, onboarding, campaign builder, and real-time delivery dashboard — including all animations and full API integration with the backend.",
     stack: ["Vue 3", "Pinia", "WebSockets"],
   },
   {
@@ -121,10 +116,7 @@ const projects: Project[] = [
     linkHref: "https://staging.getzeney.app",
     problem:
       "International money transfers to and from Africa needed to feel fast and trustworthy in the interface, not just the backend.",
-    role: "Built the frontend for transaction flows and currency conversion screens.",
-    decision:
-      "Made transaction state explicit at every screen so users always know exactly what stage their transfer is at.",
-    decisionPlaceholder: false,
+    role: "Built the landing page, including the currency converter feature, and the admin dashboard UI — components, interactions, and layout.",
     stack: ["Vue 3", "TypeScript"],
   },
   {
@@ -136,11 +128,8 @@ const projects: Project[] = [
     linkHref: "https://thia-skincare-frontend.vercel.app",
     problem:
       "A skincare brand needed an e-commerce storefront that felt premium without slowing down the shopping flow.",
-    role: "Built the storefront frontend including product pages, cart, and checkout.",
-    decision:
-      "[ Stephanie to confirm ] — e.g. how product imagery was optimised to keep first paint fast on slower connections.",
-    decisionPlaceholder: true,
-    stack: ["Vue 3", "E-commerce"],
+    role: "Took an AI-assisted approach for this one: I directed the build and reviewed every change — design, frontend, backend, and API integration — before it shipped.",
+    stack: ["Vue 3", "E-commerce", "AI"],
   },
 ];
 
@@ -167,15 +156,6 @@ function getFields(p: Project): Field[] {
       labelColor: "#7E9CD8",
       body: p.role,
       bodyStyle: { color: "#B5B3AA" },
-    },
-    {
-      lineNum: "03",
-      label: "decision",
-      labelColor: "var(--accent)",
-      body: p.decision,
-      bodyStyle: p.decisionPlaceholder
-        ? { color: "#8a887f", fontStyle: "italic" }
-        : { color: "#B5B3AA" },
     },
   ];
 }
