@@ -2,7 +2,7 @@
   <div class="max-w-full overflow-x-hidden">
     <TheSidebar :active-section="activeSection" @navigate="scrollTo" />
     <main :style="mainStyle">
-      <div class="max-w-[840px] mx-auto">
+      <div class="max-w-210 mx-auto">
         <HeroSection @scroll-to="scrollTo" />
         <AboutSection />
         <CaseStudiesSection ref="caseStudiesRef" />
