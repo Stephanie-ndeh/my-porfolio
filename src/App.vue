@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="max-w-full overflow-x-hidden">
     <TheSidebar :active-section="activeSection" @navigate="scrollTo" />
     <main :style="mainStyle">
-      <div class="max-w-[840px] mx-auto">
+      <div class="max-w-210 mx-auto">
         <HeroSection @scroll-to="scrollTo" />
         <AboutSection />
-        <CaseStudiesSection />
+        <CaseStudiesSection ref="caseStudiesRef" />
         <ServicesSection />
         <FaqSection />
         <ContactSection />
@@ -26,6 +26,7 @@ import ContactSection from "./components/ContactSection.vue";
 
 const activeSection = ref("hero");
 const isDesktop = ref(window.innerWidth >= 880);
+const caseStudiesRef = ref<{ tryOpen: (id: string) => void } | null>(null);
 
 const mainStyle = computed(() => ({
   marginLeft: isDesktop.value ? "264px" : "0",
@@ -49,6 +50,7 @@ function scrollTo(id: string) {
   const offset = window.innerWidth < 880 ? 72 : 36;
   const y = el.getBoundingClientRect().top + window.scrollY - offset;
   window.scrollTo({ top: y, behavior: "smooth" });
+  caseStudiesRef.value?.tryOpen(id);
 }
 
 let observer: IntersectionObserver | null = null;

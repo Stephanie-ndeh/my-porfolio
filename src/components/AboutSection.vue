@@ -7,15 +7,16 @@
 
     <p
       v-reveal="0"
-      class="font-sans max-w-[640px] text-[18px] leading-[1.6] text-body m-0 mt-[26px]"
+      class="font-sans max-w-160 text-[16px] lg:text-lg leading-[1.6] text-body m-0 mt-6.5"
     >
-      I'm a frontend-focused software engineer based in Cameroon. I work mostly
-      in the Vue ecosystem, building the parts of a product people actually
-      touch.
+      I'm a frontend-focused software engineer based in Cameroon, building the
+      parts of a product people actually touch. I care about the details that
+      make an interface feel solid: state that's never ambiguous, interactions
+      that feel instant, and code the next person can read.
     </p>
     <p
       v-reveal="90"
-      class="font-sans max-w-[640px] text-[18px] leading-[1.6] text-body m-0 mt-4"
+      class="font-sans max-w-[640px] text-[16px] lg:text-lg leading-[1.6] text-body m-0 mt-4"
     >
       I care about the details that make an interface feel solid: state that's
       never ambiguous, interactions that feel instant, and code the next person
@@ -24,7 +25,7 @@
 
     <div
       v-reveal="180"
-      class="font-mono text-[14px] mt-[34px] leading-[2.05] text-[#C9C7BE]"
+      class="font-mono text-[14px] mt-[34px] leading-[2.05] text-[#C9C7BE] overflow-x-auto"
     >
       <div v-for="imp in imports" :key="imp.from">
         <span class="text-synblue">import</span>
@@ -37,9 +38,9 @@
 
 <script setup lang="ts">
 const imports = [
-  { items: "Vue 3, TypeScript", from: "core" },
-  { items: "Tailwind, CSS", from: "styling" },
-  { items: "Pinia, Vuex", from: "state" },
+  { items: "Vue 3, React, HTML5, TypeScript", from: "core" },
+  { items: "Tailwind, design systems", from: "styling" },
+  { items: "state management", from: "state" },
   { items: "WebSockets, REST", from: "data" },
 ];
 </script>

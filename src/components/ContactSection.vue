@@ -14,7 +14,7 @@
 
     <p
       v-reveal="80"
-      class="m-0 mt-[22px] text-body max-w-[600px] text-[18px] leading-[1.6]"
+      class="m-0 mt-[22px] text-body max-w-[600px] text-[16px] lg:text-lg leading-[1.6]"
     >
       I'm currently available for frontend work — especially Vue and TypeScript
       projects where the interface really matters. If that sounds like your
@@ -34,7 +34,9 @@
         <span class="text-[12px] flex-none text-comment w-[74px]">{{
           link.label
         }}</span>
-        <span class="text-value text-[17px]">{{ link.display }}</span>
+        <span class="text-value text-xs lg:text-[17px]">{{
+          link.display
+        }}</span>
         <span class="ml-auto text-accent">↗</span>
       </a>
     </div>
@@ -49,20 +51,20 @@
 const links = [
   {
     label: "email",
-    href: "mailto:hello@stephaniembusheri.dev",
-    display: "hello@stephaniembusheri.dev",
+    href: "mailto:stephaniembusheri@gmail.com",
+    display: "stephaniembusheri@gmail.com",
     external: false,
   },
   {
     label: "github",
-    href: "https://github.com/stephaniembusheri",
-    display: "github.com/stephaniembusheri",
+    href: "https://github.com/Stephanie-ndeh/",
+    display: "github.com/Stephanie-ndeh",
     external: true,
   },
   {
     label: "linkedin",
-    href: "https://linkedin.com/in/stephaniembusheri",
-    display: "linkedin.com/in/stephaniembusheri",
+    href: "https://www.linkedin.com/",
+    display: "linkedin.com/in/stephanie-ndeh",
     external: true,
   },
 ];

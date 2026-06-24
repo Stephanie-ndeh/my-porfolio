@@ -25,8 +25,8 @@
         class="m-0 mt-7 text-biotext max-w-[580px] text-[clamp(17px,2.1vw,20px)] leading-[1.55]"
       >
         I build fast, trustworthy interfaces for products people use every day —
-        payments, messaging, and commerce — working mostly in Vue, TypeScript,
-        and Tailwind.
+        payments, messaging, commerce. The framework changes depending on the
+        project; the goal never does: clean code, no friction for the user.
       </p>
 
       <!-- Status pill -->
