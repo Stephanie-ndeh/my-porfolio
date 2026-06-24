@@ -1,5 +1,8 @@
 <template>
-  <section id="contact" class="mt-32 border-t border-hair pt-[46px]">
+  <section
+    id="contact"
+    class="mt-10 lg:mt-24 border-t border-hair pt-8 lg:pt-[46px]"
+  >
     <div class="flex items-baseline gap-[14px]">
       <span v-scramble class="text-[13px] text-accent">contact.ts</span>
       <span class="text-[12px] text-comment">// say hello</span>

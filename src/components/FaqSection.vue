@@ -1,5 +1,8 @@
 <template>
-  <section id="faq" class="mt-32 border-t border-hair pt-[46px]">
+  <section
+    id="faq"
+    class="mt-10 lg:mt-24 border-t border-hair pt-8 lg:pt-[46px]"
+  >
     <div class="flex items-baseline gap-[14px]">
       <span v-scramble class="text-[13px] text-accent">faq.md</span>
       <span class="text-[12px] text-comment">// frequently asked</span>

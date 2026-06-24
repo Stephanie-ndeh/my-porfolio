@@ -1,5 +1,5 @@
 <template>
-  <section id="services" class="mt-32 border-t border-hair pt-[46px]">
+  <section id="services" class="mt-10 lg:mt-24 border-t border-hair pt-[46px]">
     <div class="flex items-baseline gap-[14px]">
       <span v-scramble class="text-[13px] text-accent">services.ts</span>
       <span class="text-[12px] text-comment">// what I can do for you</span>
