@@ -141,21 +141,37 @@ onUnmounted(() => {
   window.removeEventListener("resize", onResize);
 });
 
-const navItems = [
+interface NavItem {
+  id: string;
+  label: string;
+  section: string;
+  matches?: string[];
+}
+
+const navItems: NavItem[] = [
   { id: "about", label: "about.ts", section: "about" },
-  { id: "mesagoo", label: "mesagoo.tsx", section: "mesagoo" },
-  { id: "zeney", label: "zeney.tsx", section: "zeney" },
-  { id: "thia", label: "thia.tsx", section: "thia" },
+  {
+    id: "work",
+    label: "work.ts",
+    section: "work",
+    matches: ["mesagoo", "zeney", "thia"],
+  },
   { id: "services", label: "services.ts", section: "services" },
   { id: "faq", label: "faq.md", section: "faq" },
   { id: "contact", label: "contact.ts", section: "contact" },
 ];
 
-const activeSectionInNav = computed(() =>
-  navItems.some((i) => i.section === props.activeSection)
-    ? props.activeSection
-    : null,
-);
+const activeSectionInNav = computed(() => {
+  for (const item of navItems) {
+    if (
+      item.section === props.activeSection ||
+      item.matches?.includes(props.activeSection)
+    ) {
+      return item.section;
+    }
+  }
+  return null;
+});
 
 function navItemStyle(section: string) {
   const isActive = activeSectionInNav.value === section;

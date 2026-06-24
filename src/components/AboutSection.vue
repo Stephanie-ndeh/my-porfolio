@@ -7,7 +7,7 @@
 
     <p
       v-reveal="0"
-      class="font-sans max-w-160 text-[18px] leading-[1.6] text-body m-0 mt-6.5"
+      class="font-sans max-w-160 text-[16px] lg:text-lg leading-[1.6] text-body m-0 mt-6.5"
     >
       I'm a frontend-focused software engineer based in Cameroon, building the
       parts of a product people actually touch. I care about the details that
@@ -16,7 +16,7 @@
     </p>
     <p
       v-reveal="90"
-      class="font-sans max-w-[640px] text-[18px] leading-[1.6] text-body m-0 mt-4"
+      class="font-sans max-w-[640px] text-[16px] lg:text-lg leading-[1.6] text-body m-0 mt-4"
     >
       I care about the details that make an interface feel solid: state that's
       never ambiguous, interactions that feel instant, and code the next person

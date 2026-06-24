@@ -1,87 +1,97 @@
 <template>
-  <div>
-    <!-- Eyebrow -->
+  <div id="work">
     <p
       v-reveal="0"
       class="font-mono text-[12px] tracking-[0.06em] uppercase mt-32 text-comment"
     >
-      selected work — 03 case studies
+      selected work — {{ projectCount }} case studies
     </p>
 
-    <section
-      v-for="project in projects"
-      :key="project.id"
-      :id="project.id"
-      class="mt-[34px] border-t border-hair pt-[46px]"
-    >
-      <!-- Header row -->
-      <div class="flex items-baseline gap-[14px]">
-        <span v-scramble class="text-[13px] text-accent">{{
-          project.file
-        }}</span>
-        <span class="text-[12px] text-comment">case study {{ project.n }}</span>
-      </div>
-
-      <!-- Title row -->
+    <div class="mt-[34px]">
       <div
-        v-reveal="0"
-        class="flex justify-between items-end gap-6 mt-4 flex-wrap"
+        v-for="(project, i) in projects"
+        :key="project.id"
+        :id="project.id"
+        v-reveal="i * 55"
+        class="border-t border-hair"
+        :class="{ 'border-b border-hair': i === projects.length - 1 }"
       >
-        <h2
-          class="font-semibold tracking-[-0.022em] text-heading text-[clamp(30px,4.4vw,48px)] m-0"
-        >
-          {{ project.name }}
-        </h2>
-        <a
-          :href="project.linkHref"
-          target="_blank"
-          rel="noopener"
-          class="case-link font-mono text-[13px] no-underline whitespace-nowrap text-accent pb-[6px] inline-block transition-[transform,opacity] duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:underline hover:translate-x-1"
-          >{{ project.link }} ↗</a
-        >
-      </div>
-
-      <!-- Fields block -->
-      <div v-reveal="90" class="mt-7 border-l border-hair">
+        <!-- Row -->
         <div
-          v-for="field in getFields(project)"
-          :key="field.label"
-          class="flex gap-[18px] py-[14px] pl-6"
+          role="button"
+          tabindex="0"
+          class="w-full flex items-center gap-3 py-[17px] pr-3 cursor-pointer transition-colors duration-150 hover:bg-white/[0.018]"
+          @click="toggle(project.id)"
+          @keydown.enter.prevent="toggle(project.id)"
+          @keydown.space.prevent="toggle(project.id)"
         >
-          <span
-            class="text-[12px] text-line w-[18px] text-right flex-none pt-px"
-            >{{ field.lineNum }}</span
-          >
-          <div class="flex-1">
+          <span class="font-mono text-[11px] text-comment flex-none w-5 text-right">{{ project.n }}</span>
+          <span class="text-[17px] text-heading font-medium flex-none">{{ project.name }}</span>
+          <span v-scramble class="font-mono text-[12px] text-muted flex-none hidden sm:block">{{ project.file }}</span>
+
+          <div class="flex items-center space-x-6 ml-auto">
+            <!-- Project link — visible on desktop, hidden on mobile -->
+            <a
+              class="hidden nav:inline-flex items-center gap-[5px] font-mono text-[12px] text-accent no-underline hover:underline"
+              :href="project.linkHref"
+              target="_blank"
+              rel="noopener"
+              @click.stop
+            >{{ project.link }} ↗</a>
+
             <span
-              class="text-[12px] tracking-[0.02em]"
-              :style="{ color: field.labelColor }"
-              >{{ field.label }}</span
-            >
-            <p
-              class="m-0 mt-[7px] text-[16.5px] leading-[1.55] max-w-[640px]"
-              :style="field.bodyStyle"
-            >
-              {{ field.body }}
-            </p>
+              class="font-mono text-[13px] text-accent transition-transform duration-[300ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+              :class="openId === project.id ? 'rotate-180' : 'rotate-0'"
+            >↓</span>
+          </div>
+        </div>
+
+        <!-- Expandable panel — grid trick animates to actual content height -->
+        <div
+          class="grid transition-[grid-template-rows] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+          :class="openId === project.id ? '[grid-template-rows:1fr]' : '[grid-template-rows:0fr]'"
+        >
+          <div
+            class="overflow-hidden transition-opacity duration-300"
+            :class="openId === project.id ? 'opacity-100 delay-75' : 'opacity-0'"
+          >
+            <div class="pb-6 mb-5 ml-8 pl-5 border-l border-hair">
+              <div
+                v-for="field in getFields(project)"
+                :key="field.label"
+                class="py-2.5"
+              >
+                <span class="font-mono text-[12px] tracking-[0.02em]" :style="{ color: field.labelColor }">{{ field.label }}</span>
+                <p class="m-0 mt-[6px] text-[16px] leading-[1.55] max-w-[560px]" :style="field.bodyStyle">{{ field.body }}</p>
+              </div>
+
+              <!-- URL — mobile only, sits above tags -->
+              <a
+                class="nav:hidden inline-flex items-center gap-[5px] font-mono text-[12px] text-accent no-underline hover:underline mt-5"
+                :href="project.linkHref"
+                target="_blank"
+                rel="noopener"
+              >{{ project.link }} ↗</a>
+
+              <!-- Stack tags -->
+              <div class="flex gap-[6px] flex-wrap mt-3 nav:mt-5">
+                <span
+                  v-for="tag in project.stack"
+                  :key="tag"
+                  class="font-mono text-[11px] text-tag px-[9px] py-[4px] border border-[#2c2c26] rounded-[3px]"
+                >{{ tag }}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Stack tags -->
-      <div v-reveal="170" class="flex gap-2 mt-[26px] flex-wrap">
-        <span
-          v-for="tag in project.stack"
-          :key="tag"
-          class="stack-tag text-[12px] text-tag px-[11px] py-[5px] border border-[#2c2c26] rounded-[3px] inline-block transition-[transform,border-color,color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] cursor-default hover:border-accent hover:text-heading hover:-translate-y-0.5"
-          >{{ tag }}</span
-        >
-      </div>
-    </section>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from "vue";
+
 interface Project {
   id: string;
   file: string;
@@ -97,7 +107,7 @@ interface Project {
 const projects: Project[] = [
   {
     id: "mesagoo",
-    file: "mesagoo.tsx",
+    file: "mesagoo.vue",
     n: "01",
     name: "Mesagoo",
     link: "mesagoo.com",
@@ -109,7 +119,7 @@ const projects: Project[] = [
   },
   {
     id: "zeney",
-    file: "zeney.tsx",
+    file: "zeney.vue",
     n: "02",
     name: "Zeney",
     link: "staging.getzeney.app",
@@ -121,7 +131,7 @@ const projects: Project[] = [
   },
   {
     id: "thia",
-    file: "thia.tsx",
+    file: "thia.vue",
     n: "03",
     name: "THIA Skincare",
     link: "thia-skincare-frontend.vercel.app",
@@ -129,12 +139,27 @@ const projects: Project[] = [
     problem:
       "A skincare brand needed an e-commerce storefront that felt premium without slowing down the shopping flow.",
     role: "Took an AI-assisted approach for this one: I directed the build and reviewed every change — design, frontend, backend, and API integration — before it shipped.",
-    stack: ["Vue 3", "E-commerce", "AI"],
+    stack: ["Nuxt", "E-commerce", "AI"],
   },
 ];
 
+const projectCount = computed(() => String(projects.length).padStart(2, "0"));
+
+const openId = ref<string | null>(null);
+
+function toggle(id: string) {
+  openId.value = openId.value === id ? null : id;
+}
+
+function tryOpen(id: string) {
+  if (projects.some((p) => p.id === id)) {
+    openId.value = id;
+  }
+}
+
+defineExpose({ tryOpen });
+
 interface Field {
-  lineNum: string;
   label: string;
   labelColor: string;
   body: string;
@@ -144,14 +169,12 @@ interface Field {
 function getFields(p: Project): Field[] {
   return [
     {
-      lineNum: "01",
       label: "problem",
       labelColor: "#D08C70",
       body: p.problem,
       bodyStyle: { color: "#B5B3AA" },
     },
     {
-      lineNum: "02",
       label: "my role",
       labelColor: "#7E9CD8",
       body: p.role,
