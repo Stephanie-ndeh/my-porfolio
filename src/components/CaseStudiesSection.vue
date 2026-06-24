@@ -2,7 +2,7 @@
   <div id="work">
     <p
       v-reveal="0"
-      class="font-mono text-[12px] tracking-[0.06em] uppercase mt-32 text-comment"
+      class="font-mono text-[12px] tracking-[0.06em] uppercase mt-10 nav:mt-24 text-comment"
     >
       selected work — {{ projectCount }} case studies
     </p>
@@ -25,9 +25,18 @@
           @keydown.enter.prevent="toggle(project.id)"
           @keydown.space.prevent="toggle(project.id)"
         >
-          <span class="font-mono text-[11px] text-comment flex-none w-5 text-right">{{ project.n }}</span>
-          <span class="text-[17px] text-heading font-medium flex-none">{{ project.name }}</span>
-          <span v-scramble class="font-mono text-[12px] text-muted flex-none hidden sm:block">{{ project.file }}</span>
+          <span
+            class="font-mono text-[11px] text-comment flex-none w-5 text-right"
+            >{{ project.n }}</span
+          >
+          <span class="text-[17px] text-heading font-medium flex-none">{{
+            project.name
+          }}</span>
+          <span
+            v-scramble
+            class="font-mono text-[12px] text-muted flex-none hidden sm:block"
+            >{{ project.file }}</span
+          >
 
           <div class="flex items-center space-x-6 ml-auto">
             <!-- Project link — visible on desktop, hidden on mobile -->
@@ -37,23 +46,31 @@
               target="_blank"
               rel="noopener"
               @click.stop
-            >{{ project.link }} ↗</a>
+              >{{ project.link }} ↗</a
+            >
 
             <span
               class="font-mono text-[13px] text-accent transition-transform duration-[300ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
               :class="openId === project.id ? 'rotate-180' : 'rotate-0'"
-            >↓</span>
+              >↓</span
+            >
           </div>
         </div>
 
         <!-- Expandable panel — grid trick animates to actual content height -->
         <div
           class="grid transition-[grid-template-rows] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
-          :class="openId === project.id ? '[grid-template-rows:1fr]' : '[grid-template-rows:0fr]'"
+          :class="
+            openId === project.id
+              ? '[grid-template-rows:1fr]'
+              : '[grid-template-rows:0fr]'
+          "
         >
           <div
             class="overflow-hidden transition-opacity duration-300"
-            :class="openId === project.id ? 'opacity-100 delay-75' : 'opacity-0'"
+            :class="
+              openId === project.id ? 'opacity-100 delay-75' : 'opacity-0'
+            "
           >
             <div class="pb-6 mb-5 ml-8 pl-5 border-l border-hair">
               <div
@@ -61,8 +78,17 @@
                 :key="field.label"
                 class="py-2.5"
               >
-                <span class="font-mono text-[12px] tracking-[0.02em]" :style="{ color: field.labelColor }">{{ field.label }}</span>
-                <p class="m-0 mt-[6px] text-[16px] leading-[1.55] max-w-[560px]" :style="field.bodyStyle">{{ field.body }}</p>
+                <span
+                  class="font-mono text-[12px] tracking-[0.02em]"
+                  :style="{ color: field.labelColor }"
+                  >{{ field.label }}</span
+                >
+                <p
+                  class="m-0 mt-[6px] text-[16px] leading-[1.55] max-w-[560px]"
+                  :style="field.bodyStyle"
+                >
+                  {{ field.body }}
+                </p>
               </div>
 
               <!-- URL — mobile only, sits above tags -->
@@ -71,7 +97,8 @@
                 :href="project.linkHref"
                 target="_blank"
                 rel="noopener"
-              >{{ project.link }} ↗</a>
+                >{{ project.link }} ↗</a
+              >
 
               <!-- Stack tags -->
               <div class="flex gap-[6px] flex-wrap mt-3 nav:mt-5">
@@ -79,7 +106,8 @@
                   v-for="tag in project.stack"
                   :key="tag"
                   class="font-mono text-[11px] text-tag px-[9px] py-[4px] border border-[#2c2c26] rounded-[3px]"
-                >{{ tag }}</span>
+                  >{{ tag }}</span
+                >
               </div>
             </div>
           </div>

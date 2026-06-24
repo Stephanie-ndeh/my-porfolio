@@ -1,5 +1,5 @@
 <template>
-  <section id="about" class="mt-32 border-t border-hair pt-[46px]">
+  <section id="about" class="mt-10 lg:mt-24 border-t border-hair pt-[46px]">
     <div class="flex items-baseline gap-[14px]">
       <span v-scramble class="text-[13px] text-accent">about.ts</span>
       <span class="text-[12px] text-comment">// who I am</span>
